@@ -3,7 +3,7 @@
 '''
 https://leetcode.com/problems/increasing-triplet-subsequence/description/
 
- Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.
+Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.
 
 Formally the function should:
 
@@ -12,9 +12,9 @@ Formally the function should:
 
 Your algorithm should run in O(n) time complexity and O(1) space complexity. 
 
-## 
-Solution  
-    
+Proposed Solution  
+=================
+
     Find a and b - a being a trailing minima and b is the following minimal maxima
     
     From init, 
@@ -36,16 +36,15 @@ Solution
         When potential replacement candidate for b is found, we also update a_ to null.
 
         possibly some opportunity here for recursiveness and optimization?
-
 '''
-
 class Solution(object):
+
     def increasingTriplet(self, nums):
         """
         :type nums: List[int]
         :rtype: bool
         """
-            
+        
         #init
         if(len(nums) < 3):
             return False
@@ -53,42 +52,52 @@ class Solution(object):
             a = nums[0]
             b = c = a_ = None
 
-        print nums 
+        print "Input Array: " + str(nums)
 
         #iterate from nums[1] 
         for i, x in enumerate(nums[1:]):
             
             if (b == None): 
-                # executes until we've found b
 
+                # executes until we've found b
                 if (x > a): 
+
                     # found b if x > a and a exists
                     b = x 
 
                 else: 
+
                     # sequence in decreasing order, so update a
                     a = x    
-            else: # once we have found a and b 
-
+            else: 
+                
+                # once we have found a and b 
                 if (x > b):
+
                     # Increasing Triplet found
-                    print ('Result - True at array index=%d', i+1)  
+                    print "Result:True at array index: nums[" + str(i+1) + "]" + "=" + str(x)
                     return True
                 else:
                     
+                    # Potential update to n_
                     if (a_ == None):
-                        # potential update to a_
                         if (x < a): 
                             a_ = x
                     else:
+
+                        # Potential update to a_ or b
                         if(x < a_):
+                            
+                            # update new a_
                             a_ = x
                         else: 
+
+                            # update the b 
                             b = x
                             a = a_
                             a_ = None
         
-        print 'Result - False'  
+        print 'Result:False'  
         return False
 
 
