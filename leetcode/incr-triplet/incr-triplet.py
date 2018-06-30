@@ -63,6 +63,7 @@ class Solution(object):
                 if (x > a): 
 
                     # found b if x > a and a exists
+                    print 'b is found at ' + str(i+1)
                     b = x 
 
                 else: 
@@ -73,16 +74,21 @@ class Solution(object):
                 
                 # once we have found a and b 
                 if (x > b):
-
                     # Increasing Triplet found
                     print "Result:True at array index: nums[" + str(i+1) + "]" + "=" + str(x)
                     return True
                 else:
                     
-                    # Potential update to n_
+                    # Potential update to a_ or even b
                     if (a_ == None):
+                      
+                        # update a_ if x less than current a 
                         if (x < a): 
                             a_ = x
+                        else: 
+                            # update b if x is less than current b 
+                            if (x < b):
+                                b = x
                     else:
 
                         # Potential update to a_ or b
@@ -103,15 +109,17 @@ class Solution(object):
 
 if __name__ == "__main__":
      myobj = Solution()
-     assert( myobj.increasingTriplet([5,4,3,2,1]) is False)
-     assert( myobj.increasingTriplet([5,4]) is False)
-     assert( myobj.increasingTriplet([1,2,3,4,5]) is True)
-     assert( myobj.increasingTriplet([1,4,3,5,2]) is True)
-     assert( myobj.increasingTriplet([1,5,4,3,2]) is False)
-     assert( myobj.increasingTriplet([9,2,7,1,3]) is False)
-     assert( myobj.increasingTriplet([9,2,7,1,3,5]) is True)
-     assert( myobj.increasingTriplet([1,1,1,1,1,1]) is False)
-     assert( myobj.increasingTriplet([1,2,-10,-8,-7]) is True)
-     assert( myobj.increasingTriplet([8,9,5,6,7]) is True)
-     assert( myobj.increasingTriplet([1,2,1,2,1,2,1,2,1,2]) is False)
+
+     assert( myobj.increasingTriplet([2,5,3,4,5]) is True)
+#     assert( myobj.increasingTriplet([5,4,3,2,1]) is False)
+#     assert( myobj.increasingTriplet([5,4]) is False)
+#     assert( myobj.increasingTriplet([1,2,3,4,5]) is True)
+#     assert( myobj.increasingTriplet([1,4,3,5,2]) is True)
+#     assert( myobj.increasingTriplet([1,5,4,3,2]) is False)
+#     assert( myobj.increasingTriplet([9,2,7,1,3]) is False)
+#     assert( myobj.increasingTriplet([9,2,7,1,3,5]) is True)
+#     assert( myobj.increasingTriplet([1,1,1,1,1,1]) is False)
+#     assert( myobj.increasingTriplet([1,2,-10,-8,-7]) is True)
+#     assert( myobj.increasingTriplet([8,9,5,6,7]) is True)
+#     assert( myobj.increasingTriplet([1,2,1,2,1,2,1,2,1,2]) is False)
         
