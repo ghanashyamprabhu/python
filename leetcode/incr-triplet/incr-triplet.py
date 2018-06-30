@@ -47,8 +47,11 @@ class Solution(object):
         """
             
         #init
-        a = nums[0]
-        b = c = a_ = None
+        if(len(nums) < 3):
+            return False
+        else: 
+            a = nums[0]
+            b = c = a_ = None
 
         print nums 
 
